@@ -4,7 +4,7 @@
 
 A ArthurLabs estrutura a presença digital de empresas para que sejam encontradas, compreendidas e contatadas no ambiente digital. O trabalho combina estratégia, design, desenvolvimento, SEO e configurações técnicas de descoberta — não se resume à criação de sites.
 
-Site oficial: https://arthurlabs.example (TODO: domínio oficial ainda pendente de definição)
+Site oficial: https://arthurlabs.io
 
 ## Recursos públicos
 

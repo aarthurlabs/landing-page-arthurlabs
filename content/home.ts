@@ -1,12 +1,18 @@
 // Estrutura de conteúdo da home, derivada de docs/structure.md.
 // Copy provisória: coerente com o documento, não é a redação comercial final.
 
+export interface SocialProofContent {
+  label: string
+  items: { value: string; description: string }[]
+}
+
 export interface HomeContent {
   hero: {
     headline: string
     description: string
     ctaLabel: string
     supportingText: string
+    socialProof: SocialProofContent | null
   }
   diagnostic: {
     eyebrow: string
@@ -25,6 +31,13 @@ export interface HomeContent {
     heading: string
     description: string
     steps: { number: string; title: string; description: string }[]
+    proof: {
+      eyebrow: string
+      title: string
+      description: string
+      questionsLabel: string
+      questions: string[]
+    }
   }
   conversion: {
     eyebrow: string
@@ -40,7 +53,10 @@ export const homeContent: HomeContent = {
     description:
       "O problema não é não ter um site. É a empresa não estar bem posicionada quando alguém procura pelo serviço, produto ou solução que ela oferece.",
     ctaLabel: "Analisar minha presença digital",
-    supportingText: "Diagnóstico inicial sem compromisso.",
+    supportingText: "O primeiro passo é entender como sua empresa é encontrada hoje.",
+    // TODO: prova social real (projetos, depoimentos, resultados verificáveis) ainda não disponível.
+    // Enquanto for null, o hero não exibe nenhum bloco de prova — nada fictício é publicado.
+    socialProof: null,
   },
   diagnostic: {
     eyebrow: "Diagnóstico",
@@ -123,6 +139,22 @@ export const homeContent: HomeContent = {
         description: "Garantimos que a estrutura esteja publicada, configurada e preparada para ser descoberta.",
       },
     ],
+    // Sem cases ou métricas reais disponíveis, a prova demonstra o raciocínio do
+    // diagnóstico — conforme docs/structure.md, preferível a prova fraca ou artificial.
+    proof: {
+      eyebrow: "Diagnóstico",
+      title: "O formato da solução muda porque o problema muda.",
+      description:
+        "Antes de propor qualquer entrega, precisamos entender o que ela precisa resolver. Uma empresa pode não ter referência oficial no digital, outra pode já ter um site e não ser encontrada, outra pode aparecer nas buscas com informações desatualizadas.",
+      questionsLabel: "Perguntas que orientam o diagnóstico",
+      questions: [
+        "Como essa empresa é encontrada hoje?",
+        "O que aparece quando alguém procura por ela?",
+        "O cliente consegue entender rapidamente o que ela oferece?",
+        "As informações disponíveis são claras e consistentes?",
+        "Existe algum obstáculo entre encontrar a empresa e entrar em contato?",
+      ],
+    },
   },
   conversion: {
     eyebrow: "Conversão",
