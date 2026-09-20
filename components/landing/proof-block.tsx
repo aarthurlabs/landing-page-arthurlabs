@@ -4,6 +4,7 @@ import { Stack } from '@/components/layout/stack'
 import { Eyebrow } from '@/components/typography/eyebrow'
 import { Heading } from '@/components/typography/heading'
 import { Text } from '@/components/typography/text'
+import { cn } from '@/lib/cn'
 
 interface ProofBlockProps {
     /** Screenshot, projeto, resultado ou depoimento real quando existir. */
@@ -11,11 +12,12 @@ interface ProofBlockProps {
     eyebrow?: string
     title: string
     description: string
+    className?: string
 }
 
-const ProofBlock = ({ visual, eyebrow, title, description }: ProofBlockProps) => {
+const ProofBlock = ({ visual, eyebrow, title, description, className }: ProofBlockProps) => {
     return (
-        <Grid columns="twelve" gap="xl" className="items-center">
+        <Grid columns="twelve" gap="xl" className={cn('items-center', className)}>
             <div className="lg:col-span-5">{visual}</div>
 
             <Stack gap="md" className="lg:col-span-7">

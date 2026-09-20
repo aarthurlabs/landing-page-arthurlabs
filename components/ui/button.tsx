@@ -18,9 +18,9 @@ const baseStyles =
 // sk-button para que o estado pressionado não seja sobrescrito por utilitários.
 const variantStyles: Record<ButtonVariant, string> = {
     primary: 'sk-button text-ink-975',
-    dark: 'bg-ink-975 text-ink-100 hover:-translate-y-px hover:bg-ink-800 active:scale-[0.98]',
-    outline: 'border border-line hover:bg-line/40 active:scale-[0.98]',
-    ghost: 'hover:bg-line/40 active:scale-[0.98]',
+    dark: 'bg-ink-975 text-ink-100 hover:-translate-y-px hover:bg-ink-800 active:translate-y-px active:scale-[0.98]',
+    outline: 'border border-line hover:bg-line/40 active:translate-y-px active:scale-[0.98]',
+    ghost: 'hover:bg-line/40 active:translate-y-px active:scale-[0.98]',
 }
 
 const buttonStyles = ({ variant, fullWidth, className }: ButtonStyleOptions) =>

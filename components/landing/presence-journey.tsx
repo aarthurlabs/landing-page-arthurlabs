@@ -12,7 +12,7 @@ const PresenceJourney = ({ steps }: PresenceJourneyProps) => {
             as="ol"
             columns="three-desktop"
             divided
-            className="sk-panel overflow-hidden rounded-lg"
+            className="sk-panel reveal-group overflow-hidden rounded-lg"
         >
             {steps.map((step) => (
                 <li key={step.step} className="sk-cell flex flex-col gap-8 p-8 lg:p-10">

@@ -10,6 +10,7 @@ interface SectionHeaderProps {
     description?: string
     align?: 'left' | 'center'
     headingSize?: 'l' | 'm'
+    className?: string
 }
 
 const SectionHeader = ({
@@ -18,11 +19,16 @@ const SectionHeader = ({
     description,
     align = 'left',
     headingSize = 'l',
+    className,
 }: SectionHeaderProps) => {
     const isCentered = align === 'center'
 
     return (
-        <Stack gap="xs" align={isCentered ? 'center' : 'start'} className={cn(isCentered && 'text-center')}>
+        <Stack
+            gap="xs"
+            align={isCentered ? 'center' : 'start'}
+            className={cn(isCentered && 'text-center', className)}
+        >
             {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
             <Heading level={2} size={headingSize} className="max-w-content-lg">
                 {title}

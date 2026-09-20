@@ -13,7 +13,8 @@ interface SiteConfig {
   language: string
   contact: {
     email: string
-    url: string | null
+    whatsapp: string
+    whatsappUrl: string
   }
   social: {
     instagram?: string
@@ -35,9 +36,8 @@ export const siteConfig: SiteConfig = {
   contact: {
     // TODO: e-mail de contato oficial ainda não definido.
     email: "contato@arthurlabs.example",
-    // TODO: canal de contato oficial (WhatsApp, formulário ou mailto) ainda não definido.
-    // Enquanto for null, o CTA final fica desabilitado em vez de apontar para um destino fictício.
-    url: null,
+    whatsapp: "5521990014222",
+    whatsappUrl: "https://wa.me/5521990014222",
   },
   social: {
     // TODO: redes sociais ainda não definidas.

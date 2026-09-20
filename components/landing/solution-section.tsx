@@ -12,7 +12,12 @@ const SolutionSection = () => {
         <Section tone="dark" id="solucao">
             <Container>
                 <Stack gap="section">
-                    <SectionHeader eyebrow={eyebrow} title={heading} description={description} />
+                    <SectionHeader
+                        eyebrow={eyebrow}
+                        title={heading}
+                        description={description}
+                        className="reveal"
+                    />
                     <PresenceJourney steps={journey} />
                 </Stack>
             </Container>

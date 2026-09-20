@@ -55,7 +55,12 @@ const MobileNav = ({ items, ctaLabel, ctaHref }: MobileNavProps) => {
                                     {item.label}
                                 </a>
                             ))}
-                            <ButtonLink href={ctaHref} onClick={close} className="mt-4 w-full">
+                            <ButtonLink
+                                href={ctaHref}
+                                onClick={close}
+                                external
+                                className="mt-4 w-full"
+                            >
                                 {ctaLabel}
                             </ButtonLink>
                         </nav>

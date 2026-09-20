@@ -7,7 +7,7 @@ interface ProcessStepsProps {
 
 const ProcessSteps = ({ steps }: ProcessStepsProps) => {
     return (
-        <ol className="sk-seam w-full border-t border-line">
+        <ol className="process-steps sk-seam reveal-group w-full border-t border-line">
             {steps.map((step) => (
                 <li
                     key={step.number}

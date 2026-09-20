@@ -171,6 +171,16 @@
   .sk-cell {
     background-image: linear-gradient(180deg, var(--sk-cell-top), var(--sk-cell-bottom));
     box-shadow: inset 0 1px 0 var(--sk-highlight);
+    transition:
+      box-shadow var(--duration-base) var(--ease-standard),
+      transform var(--duration-base) var(--ease-standard);
+  }
+
+  .sk-cell:hover {
+    box-shadow:
+      inset 0 1px 0 var(--sk-highlight),
+      0 1px 3px rgba(3, 5, 4, 0.06);
+    transform: translateY(-1px);
   }
 
   /* Divisória entalhada: linha de sombra + highlight logo abaixo. */
@@ -196,6 +206,50 @@
       0 1px 0 rgba(3, 5, 4, 0.07),
       0 2px 8px rgba(3, 5, 4, 0.04),
       inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
+
+  .sk-availability-bar {
+    background-color: var(--ink-975);
+    background-image: linear-gradient(180deg, var(--ink-900), var(--ink-975));
+    border-bottom: 1px solid var(--ink-700);
+  }
+
+  /* Rail escuro rebaixado; o preenchimento é adicionado como filho separado. */
+  .sk-rail {
+    background: linear-gradient(180deg, var(--ink-850), var(--ink-975));
+    box-shadow:
+      inset 0 2px 6px rgba(0, 0, 0, 0.55),
+      inset 0 -1px 0 rgba(238, 242, 239, 0.04);
+  }
+
+  .sk-rail-fill {
+    transform: scaleY(0);
+    transform-origin: top;
+    background-image: linear-gradient(180deg, var(--sk-brand-top), var(--sk-brand-bottom));
+    box-shadow: 0 0 8px rgba(0, 230, 118, 0.35);
+  }
+
+  /* Ambiente do Hero: luz quase imperceptível vinda do topo, sentida antes de vista. */
+  .sk-hero-ambient {
+    background-image:
+      radial-gradient(120% 60% at 50% -10%, rgba(0, 230, 118, 0.035), transparent 60%),
+      radial-gradient(circle at 22% 28%, rgba(255, 255, 255, 0.9) 0 1px, transparent 1.6px),
+      radial-gradient(circle at 72% 64%, var(--sk-texture-light) 0 1px, transparent 1.6px),
+      linear-gradient(180deg, #ffffff 0%, #fbfcfa 62%, var(--paper) 100%);
+    background-size:
+      100% 100%,
+      19px 19px,
+      23px 23px,
+      100% 100%;
+  }
+
+  /* Etapas conectadas por uma trilha; hover em uma esmaece as demais (:has() puro CSS). */
+  .process-steps:has(li:hover) li:not(:hover) {
+    opacity: 0.55;
+  }
+
+  .process-steps li {
+    transition: opacity var(--duration-base) var(--ease-standard);
   }
 
   /* Plano 3 — interativo. Camadas de background ficam atrás do texto,
@@ -293,5 +347,119 @@ h6 {
   *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* Compensa o header sticky ao navegar para uma âncora. */
+#diagnostico,
+#solucao,
+#processo,
+#conversao {
+  scroll-margin-top: 6rem;
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes header-elevate {
+  from {
+    box-shadow:
+      0 1px 0 rgba(3, 5, 4, 0.07),
+      0 2px 8px rgba(3, 5, 4, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
+
+  to {
+    box-shadow:
+      0 1px 0 rgba(3, 5, 4, 0.14),
+      0 8px 24px rgba(3, 5, 4, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
+}
+
+@keyframes rail-fill {
+  from {
+    transform: scaleY(0);
+  }
+
+  to {
+    transform: scaleY(1);
+  }
+}
+
+/* Todo o sistema de motion é opt-in: sem suporte ou com redução de movimento
+   solicitada, o conteúdo permanece visível e estático — nunca escondido por JS/CSS. */
+@media (prefers-reduced-motion: no-preference) {
+  /* Hero: conteúdo já está no viewport no load, então usa delay em vez de
+     scroll-timeline. A headline nunca anima — só supporting copy e CTA. */
+  .hero-in {
+    animation: reveal-up var(--duration-reveal) var(--ease-standard) both;
+  }
+
+  .hero-in-cta {
+    animation: reveal-up var(--duration-reveal) var(--ease-standard) both;
+    animation-delay: 100ms;
+  }
+
+  @supports (animation-timeline: view()) {
+    /* Abaixo da dobra: revela ao entrar no viewport. Sem suporte, o navegador
+       ignora animation-timeline e o elemento permanece na base (opacity: 1). */
+    .reveal {
+      animation: reveal-up var(--duration-reveal) var(--ease-standard) both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 55%;
+    }
+
+    .reveal-group > * {
+      animation: reveal-up var(--duration-reveal) var(--ease-standard) both;
+      animation-timeline: view();
+    }
+
+    .reveal-group > *:nth-child(1) {
+      animation-range: entry 0% entry 45%;
+    }
+
+    .reveal-group > *:nth-child(2) {
+      animation-range: entry 5% entry 50%;
+    }
+
+    .reveal-group > *:nth-child(3) {
+      animation-range: entry 10% entry 55%;
+    }
+
+    .reveal-group > *:nth-child(4) {
+      animation-range: entry 15% entry 60%;
+    }
+
+    .reveal-group > *:nth-child(5) {
+      animation-range: entry 20% entry 65%;
+    }
+
+    .reveal-group > *:nth-child(6) {
+      animation-range: entry 25% entry 70%;
+    }
+  }
+
+  @supports (animation-timeline: scroll(root)) {
+    .sk-header {
+      animation: header-elevate linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0px 160px;
+    }
+
+    .sk-rail-fill {
+      animation: rail-fill linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0% 100%;
+    }
   }
 }

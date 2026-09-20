@@ -14,13 +14,18 @@ const DiagnosticSection = () => {
         <Section tone="paper" id="diagnostico">
             <Container>
                 <Stack gap="section">
-                    <SectionHeader eyebrow={eyebrow} title={heading} description={description} />
+                    <SectionHeader
+                        eyebrow={eyebrow}
+                        title={heading}
+                        description={description}
+                        className="reveal"
+                    />
 
                     <Grid
                         as="ul"
                         columns="three"
                         divided
-                        className="sk-panel overflow-hidden rounded-lg"
+                        className="sk-panel reveal-group overflow-hidden rounded-lg"
                     >
                         {items.map((item, index) => (
                             <li

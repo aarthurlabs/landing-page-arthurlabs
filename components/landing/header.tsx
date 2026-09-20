@@ -13,11 +13,10 @@ const navItems = [
 ]
 
 const ctaLabel = 'Falar com a ArthurLabs'
-const ctaHref = '#conversao'
 
 const Header = () => {
     return (
-        <header className="tone-light sk-header relative">
+        <header className="tone-light sk-header sticky top-0 z-40">
             <Container>
                 <div className="flex items-center justify-between gap-6 py-4">
                     <Link href="/" aria-label={`${siteConfig.name} — início`}>
@@ -39,10 +38,16 @@ const Header = () => {
                     </nav>
 
                     <div className="hidden lg:block">
-                        <ButtonLink href={ctaHref}>{ctaLabel}</ButtonLink>
+                        <ButtonLink href={siteConfig.contact.whatsappUrl} external>
+                            {ctaLabel}
+                        </ButtonLink>
                     </div>
 
-                    <MobileNav items={navItems} ctaLabel={ctaLabel} ctaHref={ctaHref} />
+                    <MobileNav
+                        items={navItems}
+                        ctaLabel={ctaLabel}
+                        ctaHref={siteConfig.contact.whatsappUrl}
+                    />
                 </div>
             </Container>
         </header>

@@ -15,7 +15,12 @@ const ProcessSection = () => {
         <Section tone="white" id="processo">
             <Container>
                 <Stack gap="section">
-                    <SectionHeader eyebrow={eyebrow} title={heading} description={description} />
+                    <SectionHeader
+                        eyebrow={eyebrow}
+                        title={heading}
+                        description={description}
+                        className="reveal"
+                    />
 
                     <ProcessSteps steps={steps} />
 
@@ -23,6 +28,7 @@ const ProcessSection = () => {
                         eyebrow={proof.eyebrow}
                         title={proof.title}
                         description={proof.description}
+                        className="reveal"
                         visual={
                             <Surface tone="paper" className="sk-well p-6 lg:p-8">
                                 <Stack gap="md">

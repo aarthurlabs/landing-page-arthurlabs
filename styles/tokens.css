@@ -75,5 +75,6 @@
     /* Motion */
     --duration-fast: 160ms;
     --duration-base: 220ms;
+    --duration-reveal: 560ms;
     --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
 }
