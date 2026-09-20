@@ -1,18 +1,20 @@
 import type { Metadata } from "next"
-import { Inter, Sora } from "next/font/google"
+import { Geist, Manrope } from "next/font/google"
 import { siteConfig } from "@/config/site"
 import { getOrganizationJsonLd, getWebSiteJsonLd } from "@/lib/structured-data"
 import "./globals.css"
 
-const sora = Sora({
-  variable: "--font-sora",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
+  weight: ["600"],
   display: "swap",
 })
 
-const inter = Inter({
-  variable: "--font-inter",
+const geist = Geist({
+  variable: "--font-geist",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
   display: "swap",
 })
 
@@ -45,7 +47,7 @@ const RootLayout = ({ children }: LayoutProps<"/">) => {
   const jsonLd = [getOrganizationJsonLd(), getWebSiteJsonLd()]
 
   return (
-    <html lang="pt-BR" className={`${sora.variable} ${inter.variable}`}>
+    <html lang="pt-BR" className={`${manrope.variable} ${geist.variable}`}>
       <body>
         {jsonLd.map((schema) => (
           <script

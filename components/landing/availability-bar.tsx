@@ -1,8 +1,6 @@
 import { Container } from '@/components/layout/container'
 import { siteConfig } from '@/config/site'
 
-// Status operacional, não banner promocional. Fica antes do Header e rola
-// junto com a página — só o Header vira sticky.
 const AvailabilityBar = () => {
     return (
         <div className="tone-dark sk-availability-bar">

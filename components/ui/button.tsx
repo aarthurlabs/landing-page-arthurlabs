@@ -9,13 +9,9 @@ interface ButtonStyleOptions {
     className?: string
 }
 
-// O anel de foco vem de docs/design.md; o outline usa currentColor porque um
-// foco verde sobre o botão verde ficaria invisível.
 const baseStyles =
     'inline-flex min-h-12 items-center justify-center gap-2 rounded-pill px-6 text-body-m font-medium transition duration-(--duration-base) ease-(--ease-standard) focus-visible:ring-4 focus-visible:ring-brand-500/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current'
 
-// primary é a única variante com material completo; hover/active vivem na classe
-// sk-button para que o estado pressionado não seja sobrescrito por utilitários.
 const variantStyles: Record<ButtonVariant, string> = {
     primary: 'sk-button text-ink-975',
     dark: 'bg-ink-975 text-ink-100 hover:-translate-y-px hover:bg-ink-800 active:translate-y-px active:scale-[0.98]',

@@ -1,6 +1,3 @@
-// Fonte de verdade institucional. Não duplicar estes valores em outros arquivos.
-// Campos marcados como TODO ainda não possuem dado real definido para a ArthurLabs.
-
 interface SiteConfig {
   name: string
   shortName: string
@@ -34,12 +31,9 @@ export const siteConfig: SiteConfig = {
   locale: "pt_BR",
   language: "pt-BR",
   contact: {
-    // TODO: e-mail de contato oficial ainda não definido.
-    email: "contato@arthurlabs.example",
+    email: "contato@arthurlabs.io",
     whatsapp: "5521990014222",
     whatsappUrl: "https://wa.me/5521990014222",
   },
-  social: {
-    // TODO: redes sociais ainda não definidas.
-  },
+  social: {},
 }

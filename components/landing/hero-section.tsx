@@ -18,7 +18,6 @@ const HeroSection = () => {
                     {socialProof && <SocialProof content={socialProof} align="center" />}
 
                     <Stack gap="md" align="center">
-                        {/* A headline nunca anima: precisa estar visível imediatamente. */}
                         <Heading level={1} size="display-l" className="max-w-content-lg">
                             {headline}
                         </Heading>

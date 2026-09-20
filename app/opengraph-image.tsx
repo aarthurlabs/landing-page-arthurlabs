@@ -10,11 +10,7 @@ export const size = {
 }
 export const contentType = 'image/png'
 
-// Cores hardcoded: Satori (next/og) não suporta CSS custom properties.
-// Os valores espelham styles/tokens.css (ink-975, paper, brand-500).
 const OpengraphImage = async () => {
-    // Mesma marca oficial, na derivação de margem justa usada como app icon:
-    // o asset original tem ~24% de margem transparente e ficaria pequeno demais aqui.
     const symbol = await readFile(join(process.cwd(), 'app/icon.png'))
     const symbolSrc = `data:image/png;base64,${symbol.toString('base64')}`
 

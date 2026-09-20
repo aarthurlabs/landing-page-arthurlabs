@@ -1,6 +1,3 @@
-// Estrutura de conteúdo da home, derivada de docs/structure.md.
-// Copy provisória: coerente com o documento, não é a redação comercial final.
-
 export interface SocialProofContent {
   label: string
   items: { value: string; description: string }[]
@@ -54,8 +51,6 @@ export const homeContent: HomeContent = {
       "O problema não é não ter um site. É a empresa não estar bem posicionada quando alguém procura pelo serviço, produto ou solução que ela oferece.",
     ctaLabel: "Analisar minha presença digital",
     supportingText: "O primeiro passo é entender como sua empresa é encontrada hoje.",
-    // TODO: prova social real (projetos, depoimentos, resultados verificáveis) ainda não disponível.
-    // Enquanto for null, o hero não exibe nenhum bloco de prova — nada fictício é publicado.
     socialProof: null,
   },
   diagnostic: {
@@ -139,8 +134,6 @@ export const homeContent: HomeContent = {
         description: "Garantimos que a estrutura esteja publicada, configurada e preparada para ser descoberta.",
       },
     ],
-    // Sem cases ou métricas reais disponíveis, a prova demonstra o raciocínio do
-    // diagnóstico — conforme docs/structure.md, preferível a prova fraca ou artificial.
     proof: {
       eyebrow: "Diagnóstico",
       title: "O formato da solução muda porque o problema muda.",

@@ -3,7 +3,6 @@ import { Text } from '@/components/typography/text'
 import { Logo } from '@/components/ui/logo'
 import { siteConfig } from '@/config/site'
 
-// Exibe apenas informação real. Contato e redes seguem pendentes em config/site.ts.
 const Footer = () => {
     const year = new Date().getFullYear()
 
@@ -18,9 +17,17 @@ const Footer = () => {
                         </Text>
                     </div>
 
-                    <Text size="s" muted>
-                        © {year} {siteConfig.name}
-                    </Text>
+                    <div className="flex flex-col items-start gap-2 sm:items-end">
+                        <a
+                            href={`mailto:${siteConfig.contact.email}`}
+                            className="text-body-s text-muted transition duration-(--duration-fast) ease-(--ease-standard) hover:text-ink-100"
+                        >
+                            {siteConfig.contact.email}
+                        </a>
+                        <Text size="s" muted>
+                            © {year} {siteConfig.name}
+                        </Text>
+                    </div>
                 </div>
             </Container>
         </footer>

@@ -32,7 +32,6 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  /* Cores derivadas do tom da seção (ver .tone-light / .tone-dark) */
   --color-muted: var(--muted);
   --color-line: var(--line);
 
@@ -52,10 +51,9 @@
   --shadow-soft: var(--shadow-soft);
   --shadow-lifted: var(--shadow-lifted);
 
-  --font-sans: var(--font-inter);
-  --font-heading: var(--font-sora);
+  --font-sans: var(--font-geist);
+  --font-heading: var(--font-manrope);
 
-  /* Escala tipográfica de docs/design.md */
   --text-display-xl: clamp(3.5rem, 7vw, 7.2rem);
   --text-display-xl--line-height: 0.9;
   --text-display-xl--letter-spacing: -0.055em;
@@ -109,8 +107,6 @@
 }
 
 @layer components {
-  /* Contexto de tom: texto, divisórias e material da seção.
-     A luz vem sempre de cima, então cada tom define seu próprio highlight. */
   .tone-light {
     color: var(--ink-975);
     --muted: var(--ink-500);
@@ -133,7 +129,6 @@
     --sk-inset: inset 0 3px 10px rgba(0, 0, 0, 0.45);
   }
 
-  /* Plano 1 — ambiente: cor de fundo + microtextura + iluminação vertical. */
   .sk-plane-white {
     background-color: var(--surface-light);
     background-image:
@@ -162,7 +157,6 @@
     background-size: 21px 21px, 25px 25px, 100% 100%, 100% 100%;
   }
 
-  /* Plano 2 — superfície: painel único com divisórias internas. */
   .sk-panel {
     border: 1px solid var(--line);
     box-shadow: var(--sk-raised);
@@ -183,18 +177,15 @@
     transform: translateY(-1px);
   }
 
-  /* Divisória entalhada: linha de sombra + highlight logo abaixo. */
   .sk-rule {
     box-shadow: 0 1px 0 var(--sk-highlight);
   }
 
-  /* Superfície rebaixada, para painéis funcionais. */
   .sk-well {
     background-image: linear-gradient(180deg, #ecefe9, #f8faf6);
     box-shadow: var(--sk-inset), 0 1px 0 var(--sk-highlight);
   }
 
-  /* Costura física entre dois planos do mesmo material. */
   .sk-seam {
     box-shadow: inset 0 1px 0 var(--sk-highlight);
   }
@@ -214,7 +205,6 @@
     border-bottom: 1px solid var(--ink-700);
   }
 
-  /* Rail escuro rebaixado; o preenchimento é adicionado como filho separado. */
   .sk-rail {
     background: linear-gradient(180deg, var(--ink-850), var(--ink-975));
     box-shadow:
@@ -229,7 +219,6 @@
     box-shadow: 0 0 8px rgba(0, 230, 118, 0.35);
   }
 
-  /* Ambiente do Hero: luz quase imperceptível vinda do topo, sentida antes de vista. */
   .sk-hero-ambient {
     background-image:
       radial-gradient(120% 60% at 50% -10%, rgba(0, 230, 118, 0.035), transparent 60%),
@@ -243,7 +232,6 @@
       100% 100%;
   }
 
-  /* Etapas conectadas por uma trilha; hover em uma esmaece as demais (:has() puro CSS). */
   .process-steps:has(li:hover) li:not(:hover) {
     opacity: 0.55;
   }
@@ -252,8 +240,6 @@
     transition: opacity var(--duration-base) var(--ease-standard);
   }
 
-  /* Plano 3 — interativo. Camadas de background ficam atrás do texto,
-     então o brilho especular não reduz o contraste do label. */
   .sk-button {
     border: 1px solid transparent;
     background:
@@ -280,7 +266,6 @@
       inset 0 -1px 0 var(--sk-brand-edge);
   }
 
-  /* Pressionado: a luz inverte e a superfície afunda. */
   .sk-button:active {
     transform: translateY(1px) scale(0.99);
     background:
@@ -308,12 +293,31 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-color: var(--brand-500) var(--ink-950);
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ink-950);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--brand-500);
+  border-radius: var(--radius-pill);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-400);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -324,7 +328,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
 }
 
 ::selection {
@@ -350,7 +354,6 @@ h6 {
   }
 }
 
-/* Compensa o header sticky ao navegar para uma âncora. */
 #diagnostico,
 #solucao,
 #processo,
@@ -396,11 +399,7 @@ h6 {
   }
 }
 
-/* Todo o sistema de motion é opt-in: sem suporte ou com redução de movimento
-   solicitada, o conteúdo permanece visível e estático — nunca escondido por JS/CSS. */
 @media (prefers-reduced-motion: no-preference) {
-  /* Hero: conteúdo já está no viewport no load, então usa delay em vez de
-     scroll-timeline. A headline nunca anima — só supporting copy e CTA. */
   .hero-in {
     animation: reveal-up var(--duration-reveal) var(--ease-standard) both;
   }
@@ -411,8 +410,6 @@ h6 {
   }
 
   @supports (animation-timeline: view()) {
-    /* Abaixo da dobra: revela ao entrar no viewport. Sem suporte, o navegador
-       ignora animation-timeline e o elemento permanece na base (opacity: 1). */
     .reveal {
       animation: reveal-up var(--duration-reveal) var(--ease-standard) both;
       animation-timeline: view();

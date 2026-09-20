@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react'
 import { cn } from '@/lib/cn'
 
-// Gaps seguem as relações de spacing definidas em docs/design.md.
 type StackGap = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'section'
 type StackAlign = 'start' | 'center'
 

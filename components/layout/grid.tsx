@@ -9,7 +9,6 @@ interface GridProps {
     children: ReactNode
     columns: GridColumns
     gap?: GridGap
-    /** Divisórias compartilhadas: os filhos definem o próprio background. */
     divided?: boolean
     as?: GridElement
     className?: string

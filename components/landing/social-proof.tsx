@@ -9,7 +9,6 @@ interface SocialProofProps {
     align?: 'start' | 'center'
 }
 
-// Renderiza apenas prova real. Sem itens, nada é exibido.
 const SocialProof = ({ content, align = 'start' }: SocialProofProps) => {
     if (content.items.length === 0) {
         return null

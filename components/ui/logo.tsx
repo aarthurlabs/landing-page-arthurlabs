@@ -8,8 +8,6 @@ interface LogoProps {
     className?: string
 }
 
-// Lockup oficial: símbolo + wordmark. O símbolo é decorativo porque o nome já
-// aparece como texto ao lado.
 const Logo = ({ priority = false, className }: LogoProps) => {
     return (
         <span className={cn('inline-flex items-center gap-2', className)}>

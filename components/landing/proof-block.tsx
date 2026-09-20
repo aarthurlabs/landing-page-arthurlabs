@@ -7,7 +7,6 @@ import { Text } from '@/components/typography/text'
 import { cn } from '@/lib/cn'
 
 interface ProofBlockProps {
-    /** Screenshot, projeto, resultado ou depoimento real quando existir. */
     visual: ReactNode
     eyebrow?: string
     title: string

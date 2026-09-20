@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react'
 import { cn } from '@/lib/cn'
 
-// O nível representa a hierarquia do documento; o size representa a escala visual.
 type HeadingLevel = 1 | 2 | 3 | 4
 type HeadingSize = 'display-xl' | 'display-l' | 'l' | 'm' | 's'
 
