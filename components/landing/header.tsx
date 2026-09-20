@@ -20,7 +20,7 @@ const Header = () => {
             <Container>
                 <div className="flex items-center justify-between gap-6 py-4">
                     <Link href="/" aria-label={`${siteConfig.name} — início`}>
-                        <Logo priority />
+                        <Logo variant="mark" priority />
                     </Link>
 
                     <nav aria-label="Principal" className="hidden lg:block">
